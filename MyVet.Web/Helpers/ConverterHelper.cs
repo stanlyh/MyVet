@@ -61,7 +61,7 @@ namespace MyVet.Web.Helpers
         {
             return new History
             {
-                Date = model.Date,
+                Date = model.Date.ToUniversalTime(),
                 Description = model.Description,
                 Id = isNew ? 0 : model.Id,
                 Pet = await _dataContext.Pets.FindAsync(model.PetId),
