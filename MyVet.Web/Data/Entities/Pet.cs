@@ -28,7 +28,7 @@ namespace MyVet.Web.Data.Entities
 
         //TODO: replace the correct URL for the image
         public string ImageFullPath => string.IsNullOrEmpty(ImageUrl)
-            ? null
+            ? "https://bi.sedemi.com/images/Pets/noimage.png"
             : $"http://bi.sedemi.com{ImageUrl.Substring(1)}";
 
         [Display(Name = "Born")]
