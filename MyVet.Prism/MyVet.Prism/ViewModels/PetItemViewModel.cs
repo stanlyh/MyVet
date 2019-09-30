@@ -26,7 +26,8 @@ namespace MyVet.Prism.ViewModels
                 { "pet", this }
             };
 
-            await _navigationService.NavigateAsync("PetPage", parameters);
+            //await _navigationService.NavigateAsync("PetPage", parameters);
+            await _navigationService.NavigateAsync("HistoriesPage", parameters);
         }
     }
 }
