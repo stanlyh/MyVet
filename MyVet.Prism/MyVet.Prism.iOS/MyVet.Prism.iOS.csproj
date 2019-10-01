@@ -210,5 +210,8 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_list.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logovet.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
