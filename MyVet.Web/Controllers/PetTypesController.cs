@@ -116,7 +116,6 @@ namespace MyVet.Web.Controllers
             return View(petType);
         }
 
-        // GET: PetTypes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -132,11 +131,12 @@ namespace MyVet.Web.Controllers
                 return NotFound();
             }
 
-            if(petType.Pets.Count > 0)
+            if (petType.Pets.Count > 0)
             {
                 ModelState.AddModelError(string.Empty, "The pet type can't be removed.");
                 return RedirectToAction(nameof(Index));
             }
+
             _context.PetTypes.Remove(petType);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
