@@ -15,7 +15,7 @@ namespace MyVet.Web.Helpers
             _dataContext = dataContext;
         }
 
-        public async Task AddDays(int days)
+        public async Task AddDaysAsync(int days)
         {
             DateTime initialDate;
 

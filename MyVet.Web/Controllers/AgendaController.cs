@@ -17,7 +17,8 @@ namespace MyVet.Web.Controllers
         private readonly IAgendaHelper _agendaHelper;
         private readonly ICombosHelper _combosHelper;
 
-        public AgendaController(DataContext dataContext, 
+        public AgendaController(
+            DataContext dataContext, 
             IAgendaHelper agendaHelper,
             ICombosHelper combosHelper)
         {
@@ -37,7 +38,7 @@ namespace MyVet.Web.Controllers
 
         public async Task<IActionResult> AddDays()
         {
-            await _agendaHelper.AddDays(30);
+            await _agendaHelper.AddDaysAsync(7);
             return RedirectToAction(nameof(Index));
         }
 
@@ -67,24 +68,27 @@ namespace MyVet.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Assing(AgendaViewModel view)
+        public async Task<IActionResult> Assing(AgendaViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var agenda = await _dataContext.Agendas.FindAsync(view.Id);
+                var agenda = await _dataContext.Agendas.FindAsync(model.Id);
                 if (agenda != null)
                 {
                     agenda.IsAvailable = false;
-                    agenda.Owner = await _dataContext.Owners.FindAsync(view.OwnerId);
-                    agenda.Pet = await _dataContext.Pets.FindAsync(view.PetId);
-                    agenda.Remarks = view.Remarks;
+                    agenda.Owner = await _dataContext.Owners.FindAsync(model.OwnerId);
+                    agenda.Pet = await _dataContext.Pets.FindAsync(model.PetId);
+                    agenda.Remarks = model.Remarks;
                     _dataContext.Agendas.Update(agenda);
                     await _dataContext.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
             }
 
-            return View(view);
+            model.Owners = _combosHelper.GetComboOwners();
+            model.Pets = _combosHelper.GetComboPets(model.OwnerId);
+
+            return View(model);
         }
 
 
@@ -122,5 +126,6 @@ namespace MyVet.Web.Controllers
             await _dataContext.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
     }
 }

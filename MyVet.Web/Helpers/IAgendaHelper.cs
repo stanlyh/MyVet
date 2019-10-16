@@ -4,6 +4,6 @@ namespace MyVet.Web.Helpers
 {
     public interface IAgendaHelper
     {
-        Task AddDays(int days);
+        Task AddDaysAsync(int days);
     }
 }
