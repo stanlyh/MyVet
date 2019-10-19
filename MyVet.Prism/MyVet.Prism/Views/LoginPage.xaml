@@ -4,7 +4,6 @@
          	xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
          	prism:ViewModelLocator.AutowireViewModel="True"
          	x:Class="MyVet.Prism.Views.LoginPage"
-            BackgroundColor="{StaticResource colorBackground}"
          	Title="{Binding Title}">
     
     <ScrollView>
@@ -28,19 +27,15 @@
         	        IsPassword="True"
         	        Placeholder="Enter your password..."
         	        Text="{Binding Password}"/>
-                <StackLayout
-                    Orientation="Horizontal"
-                    VerticalOptions="EndAndExpand">
-                    <Button
-        	            Command="{Binding LoginCommand}"
-        	            IsEnabled="{Binding IsEnabled}"
-        	            Text="Login"/>
-                    <Button
-        	            Command="{Binding RegisterCommand}"
-        	            IsEnabled="{Binding IsEnabled}"
-                        Style="{StaticResource secondaryButton}"
-        	            Text="Register"/>
-                </StackLayout>                
+                <Button
+                    BorderRadius="23"
+                    BackgroundColor="Navy"
+        	        Command="{Binding LoginCommand}"
+        	        IsEnabled="{Binding IsEnabled}"
+                    HeightRequest="46"
+        	        Text="Login"
+                    TextColor="White"
+                    VerticalOptions="EndAndExpand"/>
             </StackLayout>
             <ActivityIndicator
                 AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"

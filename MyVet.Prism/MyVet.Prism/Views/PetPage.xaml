@@ -6,7 +6,6 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="MyVet.Prism.Views.PetPage"
              IconImageSource="ic_pets"
-             BackgroundColor="{StaticResource colorBackground}"
              Title="{Binding Title}">
 
     <ScrollView>
