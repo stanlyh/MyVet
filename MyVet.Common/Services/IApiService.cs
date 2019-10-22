@@ -40,5 +40,14 @@ namespace MyVet.Common.Services
             T model,
             string tokenType,
             string accessToken);
+
+        Task<Response<object>> ChangePasswordAsync(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            ChangePasswordRequest changePasswordRequest,
+            string tokenType,
+            string accessToken);
+
     }
 }
