@@ -231,5 +231,11 @@
   <ItemGroup>
     <BundleResource Include="Resources\splashvet.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_action_add_circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\noImage.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

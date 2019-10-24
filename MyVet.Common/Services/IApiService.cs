@@ -19,7 +19,7 @@ namespace MyVet.Common.Services
             string controller,
             TokenRequest request);
 
-        //Task<bool> CheckConnection(string url);
+        Task<bool> CheckConnection(string url);
 
         Task<Response<object>> RegisterUserAsync(
             string urlBase,
@@ -46,6 +46,13 @@ namespace MyVet.Common.Services
             string servicePrefix,
             string controller,
             ChangePasswordRequest changePasswordRequest,
+            string tokenType,
+            string accessToken);
+
+        Task<Response<object>> GetListAsync<T>(
+            string urlBase,
+            string servicePrefix,
+            string controller,
             string tokenType,
             string accessToken);
 
