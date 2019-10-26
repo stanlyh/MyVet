@@ -77,8 +77,6 @@ namespace MyVet.Web.Controllers
         }
 
         // POST: Owners/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(AddUserViewModel model)
@@ -129,7 +127,9 @@ namespace MyVet.Web.Controllers
                 FirstName = view.FirstName,
                 LastName = view.LastName,
                 PhoneNumber = view.PhoneNumber,
-                UserName = view.Username
+                UserName = view.Username,
+                Latitude = view.Latitude,
+                Longitude = view.Longitude
             };
 
             var result = await _userHelper.AddUserAsync(user, view.Password);
@@ -165,7 +165,9 @@ namespace MyVet.Web.Controllers
                 FirstName = owner.User.FirstName,
                 Id = owner.Id,
                 LastName = owner.User.LastName,
-                PhoneNumber = owner.User.PhoneNumber
+                PhoneNumber = owner.User.PhoneNumber,
+                Latitude = owner.User.Latitude,
+                Longitude = owner.User.Longitude
             };
 
             return View(model);
@@ -186,6 +188,8 @@ namespace MyVet.Web.Controllers
                 owner.User.LastName = model.LastName;
                 owner.User.Address = model.Address;
                 owner.User.PhoneNumber = model.PhoneNumber;
+                owner.User.Latitude = model.Latitude;
+                owner.User.Longitude = model.Longitude;
 
                 await _userHelper.UpdateUserAsync(owner.User);
                 return RedirectToAction(nameof(Index));
